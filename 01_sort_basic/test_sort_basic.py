@@ -10,5 +10,5 @@ def test_selection():
 
 def test_bubble():
     a = [4, 3, 1, 2]
-    assert BubbleSortStep(a)
+    assert not BubbleSortStep(a)
     assert a == [3, 1, 2, 4]

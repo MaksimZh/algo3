@@ -10,9 +10,9 @@ def SelectionSortStep(array: list[int], i: int):
 
 
 def BubbleSortStep(array: list[int]) -> bool:
-    swapped: bool = False
+    sorted: bool = True
     for i in range(1, len(array)):
         if array[i - 1] > array[i]:
             array[i - 1], array[i] = array[i], array[i - 1]
-            swapped = True
-    return swapped
+            sorted = False
+    return sorted
