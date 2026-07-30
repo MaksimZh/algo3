@@ -1,6 +1,6 @@
 def InsertionSortStep(array: list[int], step: int, i: int):
     for last in range(i + step, len(array), step):
-        for j in range(last - step, i - 1, -step):
-            if array[j] <= array[j + step]:
+        for prev in range(last - step, i - 1, -step):
+            if array[prev] <= array[prev + step]:
                 break
-            array[j], array[j + step] = array[j + step], array[j]
+            array[prev], array[prev + step] = array[prev + step], array[prev]
