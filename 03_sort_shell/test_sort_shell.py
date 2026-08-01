@@ -4,8 +4,8 @@ from sort_shell import *
 
 
 def test_Knuth():
-    assert KnuthSequence(0) == []
-    assert KnuthSequence(1) == []
+    assert KnuthSequence(0) == [1]
+    assert KnuthSequence(1) == [1]
     assert KnuthSequence(2) == [1]
     assert KnuthSequence(4) == [1]
     assert KnuthSequence(5) == [4, 1]

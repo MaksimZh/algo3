@@ -1,6 +1,6 @@
 def KnuthSequence(array_size: int) -> list[int]:
-    next = 1
-    result = []
+    result = [1]
+    next = 4
     while array_size > next:
         result.append(next)
         next = 3 * next + 1
