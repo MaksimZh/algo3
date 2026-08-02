@@ -1,4 +1,6 @@
 def KnuthSequence(array_size: int) -> list[int]:
+    if array_size == 0:
+         return []
     result = [1]
     next = 4
     while array_size > next:
