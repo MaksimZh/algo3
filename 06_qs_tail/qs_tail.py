@@ -31,16 +31,17 @@ def ArrayChunk(array: list[int], left: int, right: int) -> int:
         if rf is not None:
             return rf
 
-def QuickSortTailOptimization(array: list[int], left: int, right: int):
-    if left >= right:
+def QuickSortLeft(array: list[int], left: int, rights: list[int]):
+    if not rights:
         return
-    middle = ArrayChunk(array, left, right)
-    # Recursion on smaller part, tail recursion on larger part
-    if middle - left < right - middle:
-        QuickSortTailOptimization(array, left, middle - 1)
-        QuickSortTailOptimization(array, middle + 1, right)
+    if left >= rights[-1]:
+        left = rights.pop() + 2
+        QuickSortLeft(array, left, rights)
         return
-    QuickSortTailOptimization(array, middle + 1, right)
-    QuickSortTailOptimization(array, left, middle - 1)
+    middle = ArrayChunk(array, left, rights[-1])
+    rights.append(middle - 1)
+    QuickSortLeft(array, left, rights)
 
+def QuickSortTailOptimization(array: list[int], left: int, right: int):
+    QuickSortLeft(array, left, [right])
 
