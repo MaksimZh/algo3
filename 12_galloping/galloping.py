@@ -36,26 +36,25 @@ class BinarySearch:
             return
         self.result = -1
 
-    def GallopingSearch(self, array: list[int], N: int) -> bool:
-        if len(array) == 0:
+def GallopingSearch(array: list[int], N: int) -> bool:
+    if len(array) == 0:
+        return False
+    prev = 0
+    curr = 0
+    while True:
+        if array[curr] == N:
+            return True
+        if array[curr] > N:
+            break
+        if curr == len(array) - 1:
             return False
-        prev = 0
-        curr = 0
-        while True:
-            if array[curr] == N:
-                return True
-            if array[curr] > N:
-                break
-            if curr == len(array) - 1:
-                return False
-            prev = curr
-            curr = (prev + 1)*2
-            if curr >= len(array):
-                curr = len(array) - 1
-        self.array = array
-        self.Left = prev + 1
-        self.Right = curr - 1
-        self.result = 0
-        while self.GetResult() == 0:
-            self.Step(N)
-        return self.GetResult() == 1
+        prev = curr
+        curr = (prev + 1)*2
+        if curr >= len(array):
+            curr = len(array) - 1
+    bs = BinarySearch(array)
+    bs.Left = prev + 1
+    bs.Right = curr - 1
+    while bs.GetResult() == 0:
+        bs.Step(N)
+    return bs.GetResult() == 1
